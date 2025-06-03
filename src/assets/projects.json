@@ -1,37 +1,16 @@
 [
   {
-    "title": "GymSync",
+    "title": "To Do App ",
     "desc": "GymSync is a fitness-oriented term that could be associated with activities related to synchronizing or coordinating workouts, exercise routines, or fitness tracking. It might involve t integration of technology, apps, or devices to streamline a optimize fitness experiences.",
-    "image": "/images/gymsync.png",
-    "linkDemo": "https://gymsync.vercel.app/",
-    "linkCode": "https://github.com/RidloGhifary/gymsync"
+    "image": "/images/.png",
+    "linkDemo": "",
+    "linkCode": ""
   },
   {
     "title": "Car Rental",
     "desc": "Car Rental is a service-oriented project that focuses on providing an efficient and user-friendly platform for renting vehicles. The system allows users to search, book, and manage car rentals, offering features such as real-time availability, various vehicle options, and secure payment methods.",
-    "image": "/images/carrental.png",
-    "linkDemo": "https://car-rental-fawn-iota.vercel.app/",
-    "linkCode": "https://github.com/RidloGhifary/car-rental"
-  },
-  {
-    "title": "Airbnb Clone",
-    "desc": "Airbnb Clone is a web application that aims to clone the basic features of Airbnb, such as browsing available properties, booking a property, and managing reservations. It is built using React with hooks and context API, and it uses the Airbnb API for accessing property data.",
-    "image": "/images/airbnb_clone.png",
+    "image": "/images/.png",
     "linkDemo": "",
-    "linkCode": "https://github.com/RidloGhifary/airbnb-clone"
-  },
-  {
-    "title": "Spotify Clone",
-    "desc": "Spotify Clone is a web application that aims to clone the basic features of Spotify, such as playing music, creating playlists, adding songs to favorites, and more. It is built using React with hooks and context API, and it uses the Spotify Web API for accessing music data.",
-    "image": "/images/spotify_clone.png",
-    "linkDemo": "https://spitofy-delta.vercel.app/",
-    "linkCode": "https://github.com/RidloGhifary/spotify-clone"
-  },
-  {
-    "title": "Playlist Converter",
-    "desc": "This project is a web application that allows you to convert a playlist from YouTube to Spotify. The application uses the Spotify API and the YouTube API to fetch playlists and tracks from both platforms.",
-    "image": "/images/playlist-converter.png",
-    "linkDemo": "https://youtube-playlist-converter.vercel.app/",
-    "linkCode": "https://github.com/RidloGhifary/youtube-playlist-converter"
+    "linkCode": ""
   }
 ]
