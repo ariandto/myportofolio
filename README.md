@@ -90,5 +90,5 @@ npm run dev
 2. **Add a screenshot**: Upload a screenshot of your portfolio to your repository and link it in the `![Portfolio Screenshot](URL_TO_YOUR_PORTFOLIO_SCREENSHOT)` section.
 
 <div align="center">
-   <img src="/public/project-preview.png" alt="Project-Preview"/>
+   <!-- <img src="/public/project-preview.png" alt="Project-Preview"/> -->
 </div>
