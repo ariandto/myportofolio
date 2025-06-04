@@ -1,13 +1,10 @@
 import React from "react";
-import projectList from "../assets/projects.json";
+import projectList from "../assets/projects.json"; // Pastikan path ini benar
 import { Code, ExternalLink } from "lucide-react";
 import toast from "react-hot-toast";
-// import { useNavigate } from "react-router-dom"; // No longer needed for external links
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Projects: React.FC<{ t: any }> = ({ t }) => {
-  // const navigate = useNavigate(); // No longer needed for external links
-
   return (
     <section className="py-40" id="main-element">
       <h1
@@ -25,10 +22,12 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
           >
             <div
               data-aos="fade-right"
-              className={`border-AlmostWhite ${index % 2 === 0 ? "md:order-last" : null} cursor-pointer select-none rounded-lg`}
+              className={`border-AlmostWhite ${
+                index % 2 === 0 ? "md:order-last" : "" // Menggunakan "" jika null tidak diinginkan
+              } cursor-pointer select-none rounded-lg`}
             >
               <img
-                src={import.meta.env.BASE_URL + data.image}
+                src={import.meta.env.BASE_URL + data.image} // Baris ini sudah benar dengan JSON yang direvisi
                 alt={data.title}
                 className="h-[300px] w-full rounded-lg object-cover object-top transition-all duration-[7s] ease-linear hover:object-bottom"
               />
@@ -37,10 +36,13 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
               <h2 className="Kalnia text-5xl font-semibold text-SecondaryColor selection:bg-SecondaryColor selection:text-AlmostBlack">
                 {data.title}
               </h2>
-              <p className="font-light capitalize selection:bg-AlmostWhite selection:text-AlmostBlack">
-                {t(
-                  `${data.title === "GymSync" ? "gymSyncDescription" : "carRentalDescription"}`,
-                )}
+              {/* REVISI BAGIAN DESKRIPSI */}
+              <p className="font-light selection:bg-AlmostWhite selection:text-AlmostBlack">
+                {/* Menggunakan data.desc langsung. Jika data.desc adalah translation key, gunakan t(data.desc) */}
+                {/* Saya mengasumsikan data.desc adalah teks deskripsi final */}
+                {/* Jika ingin tetap menggunakan fungsi t() dan data.desc adalah key: t(data.desc) */}
+                {/* Jika deskripsi mungkin panjang dan tidak perlu di-capitalize seluruhnya, hapus className "capitalize" */}
+                {data.desc}
               </p>
               <div className="flex select-none items-center justify-center gap-5">
                 {/* Demo Button */}
@@ -48,7 +50,7 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
                   onClick={() =>
                     data.linkDemo
                       ? window.open(data.linkDemo, "_blank")
-                      : toast.error("Demo is not available")
+                      : toast.error(t("demoNotAvailable") || "Demo is not available") // Gunakan t() untuk pesan error jika ada
                   }
                   className="flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-AlmostWhite/5 px-4 py-2 capitalize transition hover:bg-AlmostWhite/20"
                 >
@@ -60,7 +62,7 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
                   onClick={() =>
                     data.linkCode
                       ? window.open(data.linkCode, "_blank")
-                      : toast.error("Code is not available")
+                      : toast.error(t("codeNotAvailable") || "Code is not available") // Gunakan t() untuk pesan error jika ada
                   }
                   className="flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-AlmostWhite/5 px-4 py-2 capitalize transition hover:bg-AlmostWhite/20"
                 >

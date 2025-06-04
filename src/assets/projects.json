@@ -2,14 +2,14 @@
   {
     "title": "To-Do App with Google Auth",
     "desc": "A modern and responsive To-Do List application built with React and Firebase. Features include Google Sign-In, real-time task management, and PWA support for mobile use.",
-    "image": "/images/todoapp.png",
+    "image": "images/todoapp.png",
     "linkDemo": "https://firebasereacttodo.vercel.app/",
     "linkCode": "https://github.com/ariandto/firebasereacttodo"
   },
   {
     "title": "IoT Smart Light Management",
     "desc": "A web-based IoT platform to control and monitor smart lighting systems using ESP32, Express.JS and MySQL. Includes real-time status updates, scheduling, and secure access.",
-    "image": "/images/iot-smart-light.png",
+    "image": "images/iot-smart-light.png",
     "linkDemo": "https://your-demo-link.com",
     "linkCode": "https://github.com/your-username/iot-smart-light"
   }
