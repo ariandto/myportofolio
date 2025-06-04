@@ -22,7 +22,7 @@ gsap.registerPlugin(ScrollTrigger);
 const VISITOR_TRACKER_API_URL = "https://portfoliobackend-mv27ok25f-ridloghifarys-projects.vercel.app/api/track";
 
 const AppContent: React.FC = () => { // Ubah nama App menjadi AppContent
-  const { theme } = useTheme(); // Dapatkan tema saat ini
+  // const { theme } = useTheme(); // Dapatkan tema saat ini
   const [isLoading, setIsLoading] = useState(true);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLElement>(null);
