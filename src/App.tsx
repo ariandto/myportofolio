@@ -126,7 +126,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      {/* Custom Cursor */}
+      {/* Custom Cursor - Desktop Only */}
       <div 
         ref={cursorRef}
         className="fixed w-5 h-5 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full pointer-events-none z-50 mix-blend-difference opacity-80 hidden lg:block"
@@ -150,62 +150,62 @@ const App: React.FC = () => {
         <div className="hero-bg absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-pink-500/10"></div>
         <BackgroundPattern />
         
-        {/* Floating orbs */}
-        <div className="fixed top-20 left-10 w-32 h-32 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-full blur-xl animate-pulse"></div>
-        <div className="fixed bottom-20 right-10 w-40 h-40 bg-gradient-to-r from-purple-400/20 to-pink-500/20 rounded-full blur-xl animate-pulse delay-1000"></div>
+        {/* Floating orbs - Responsive */}
+        <div className="fixed top-10 sm:top-20 left-4 sm:left-10 w-16 h-16 sm:w-32 sm:h-32 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-full blur-xl animate-pulse"></div>
+        <div className="fixed bottom-10 sm:bottom-20 right-4 sm:right-10 w-20 h-20 sm:w-40 sm:h-40 bg-gradient-to-r from-purple-400/20 to-pink-500/20 rounded-full blur-xl animate-pulse delay-1000"></div>
 
-        <div className="mx-auto max-w-6xl px-6 lg:px-8 2xl:max-w-7xl relative z-10">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 2xl:max-w-7xl relative z-10">
           {/* Hero Section */}
           <section 
             ref={heroRef}
-            className="hero-section relative flex min-h-screen select-none flex-col items-start justify-center pt-20 md:items-start md:py-2 md:pt-0"
+            className="hero-section relative flex min-h-screen select-none flex-col items-start justify-center pt-16 sm:pt-20 md:pt-0 px-2 sm:px-0"
           >
-            {/* Glassmorphism card */}
-            <div className="absolute inset-0 bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 shadow-2xl"></div>
+            {/* Glassmorphism card - Mobile optimized */}
+            <div className="absolute inset-2 sm:inset-0 bg-white/5 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-white/10 shadow-2xl"></div>
             
-            <div className="relative z-10 w-full">
+            <div className="relative z-10 w-full p-4 sm:p-6 lg:p-8">
               <h1
                 id="scramble"
                 data-aos="fade-down"
                 data-aos-delay="100"
-                className="Kalnia select-none text-6xl font-black bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent md:text-8xl 2xl:text-[10rem] leading-tight"
+                className="Kalnia select-none text-4xl sm:text-6xl font-black bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent md:text-8xl 2xl:text-[10rem] leading-tight"
                 style={{ 
                   filter: "drop-shadow(0 0 30px rgba(139, 92, 246, 0.3))" 
                 }}
               >
-                <span className="block text-2xl md:text-4xl font-light text-gray-300 mb-4">
+                <span className="block text-lg sm:text-2xl md:text-4xl font-light text-gray-300 mb-2 sm:mb-4">
                   Hello, I'm
                 </span>
                 <NameTypeAnimation />
               </h1>
 
-              {/* Enhanced Bio and Skills Grid */}
-              <div className="mt-12 grid gap-12 md:grid-cols-2 lg:gap-16">
-                <div className="space-y-6">
+              {/* Enhanced Bio and Skills Grid - Mobile First */}
+              <div className="mt-8 sm:mt-12 grid gap-6 sm:gap-8 md:grid-cols-2 lg:gap-16">
+                <div className="space-y-4 sm:space-y-6">
                   <p
                     data-aos="fade-right"
                     data-aos-delay="200"
-                    className="text-lg leading-relaxed text-gray-300 backdrop-blur-sm bg-white/5 p-6 rounded-2xl border border-white/10"
+                    className="text-sm sm:text-base lg:text-lg leading-relaxed text-gray-300 backdrop-blur-sm bg-white/5 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-white/10"
                   >
                     Passionate full-stack developer crafting digital experiences 
                     that blend innovation with functionality. I transform ideas 
                     into elegant, user-centric solutions.
                   </p>
                   
-                  {/* Status indicator */}
-                  <div className="flex items-center space-x-3 text-sm">
-                    <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
+                  {/* Status indicator - Mobile optimized */}
+                  <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm">
+                    <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
                     <span className="text-green-400 font-medium">Available for projects</span>
                   </div>
                 </div>
 
-                <div className="skills-container">
+                <div className="skills-container mt-6 md:mt-0">
                   <SkillList />
                 </div>
               </div>
 
-              {/* Enhanced Links Section */}
-              <div className="mt-16" data-aos="fade-up" data-aos-delay="400">
+              {/* Enhanced Links Section - Mobile spacing */}
+              <div className="mt-8 sm:mt-12 lg:mt-16" data-aos="fade-up" data-aos-delay="400">
                 <Links />
               </div>
             </div>
@@ -214,13 +214,13 @@ const App: React.FC = () => {
           {/* Transition Element */}
           <div className="h-32 bg-gradient-to-b from-transparent to-slate-900/50"></div>
 
-          {/* Projects Section */}
-          <section className="projects-section py-20">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-4">
+          {/* Projects Section - Mobile optimized */}
+          <section className="projects-section py-10 sm:py-16 lg:py-20">
+            <div className="text-center mb-8 sm:mb-12 lg:mb-16 px-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-2 sm:mb-4">
                 Featured Projects
               </h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg lg:text-xl text-gray-400 max-w-2xl mx-auto px-2">
                 Discover my latest work and creative solutions
               </p>
             </div>
@@ -228,18 +228,18 @@ const App: React.FC = () => {
           </section>
         </div>
 
-        {/* Enhanced Footer */}
-        <div className="mt-32">
+        {/* Enhanced Footer - Mobile spacing */}
+        <div className="mt-16 sm:mt-24 lg:mt-32">
           <Footer />
         </div>
 
-        {/* Scroll indicator */}
-        <div className="fixed right-8 top-1/2 transform -translate-y-1/2 hidden lg:flex flex-col items-center space-y-2 z-40">
-          <div className="w-px h-16 bg-gradient-to-b from-transparent via-cyan-400 to-transparent"></div>
-          <div className="w-2 h-8 border border-cyan-400/50 rounded-full">
-            <div className="w-1 h-2 bg-cyan-400 rounded-full mx-auto mt-1 animate-bounce"></div>
+        {/* Scroll indicator - Desktop only */}
+        <div className="fixed right-4 sm:right-8 top-1/2 transform -translate-y-1/2 hidden lg:flex flex-col items-center space-y-2 z-40">
+          <div className="w-px h-12 sm:h-16 bg-gradient-to-b from-transparent via-cyan-400 to-transparent"></div>
+          <div className="w-2 h-6 sm:h-8 border border-cyan-400/50 rounded-full">
+            <div className="w-1 h-1.5 sm:h-2 bg-cyan-400 rounded-full mx-auto mt-1 animate-bounce"></div>
           </div>
-          <div className="w-px h-16 bg-gradient-to-b from-transparent via-cyan-400 to-transparent"></div>
+          <div className="w-px h-12 sm:h-16 bg-gradient-to-b from-transparent via-cyan-400 to-transparent"></div>
         </div>
       </main>
     </>
