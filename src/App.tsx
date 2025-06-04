@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import axios from "axios";
 
 // Contexts
-import { ThemeProvider, useTheme } from "./contexts/ThemeContexts"; // Path ke ThemeContext.tsx
+// import { ThemeProvider, useTheme } from "./contexts/ThemeContexts"; // Path ke ThemeContext.tsx
 
 // Components
 import BackgroundPattern from "./components/BackgroundPattern";
@@ -249,11 +249,11 @@ const AppContent: React.FC = () => { // Ubah nama App menjadi AppContent
 
 // Buat komponen App utama yang membungkus AppContent dengan ThemeProvider
 const App: React.FC = () => {
-  return (
-    <ThemeProvider>
-      <AppContent />
-    </ThemeProvider>
-  );
+  // return (
+  //   // <ThemeProvider>
+  //   //   <AppContent />
+  //   // </ThemeProvider>
+  // );
 }
 
 export default App;
