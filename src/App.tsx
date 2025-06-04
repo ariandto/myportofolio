@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from "react"; // Hapus 'React' karena tidak lagi diperlukan secara eksplisit sejak React 17+
+import { useEffect } from "react"; // Hapus 'React' karena tidak lagi diperlukan secara eksplisit sejak React 17+
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -10,7 +10,6 @@ import BackgroundPattern from "./components/BackgroundPattern";
 import NameTypeAnimation from "./components/NameTypeAnimation";
 import SkillList from "./components/SkillList";
 import Links from "./components/Links";
-import ChangeLanguage from "./components/ChangeLanguage";
 import Footer from "./components/Footer";
 import Projects from "./components/Projects";
 
@@ -19,10 +18,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Konstanta untuk URL API dan bahasa bisa membantu maintenance
 const VISITOR_TRACKER_API_URL = "https://portfoliobackend-mv27ok25f-ridloghifarys-projects.vercel.app/api/track";
-const LANGUAGES = {
-  ENGLISH: "en",
-  INDONESIAN: "id",
-};
+// const LANGUAGES = {
+//   ENGLISH: "en",
+//   INDONESIAN: "id",
+// };
 
 const App: React.FC = () => {
   const { t, i18n } = useTranslation();
