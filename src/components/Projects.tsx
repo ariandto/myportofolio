@@ -2,11 +2,11 @@ import React from "react";
 import projectList from "../assets/projects.json";
 import { Code, ExternalLink } from "lucide-react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom"; // No longer needed for external links
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Projects: React.FC<{ t: any }> = ({ t }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate(); // No longer needed for external links
 
   return (
     <section className="py-40" id="main-element">
@@ -43,10 +43,11 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
                 )}
               </p>
               <div className="flex select-none items-center justify-center gap-5">
+                {/* Demo Button */}
                 <button
                   onClick={() =>
                     data.linkDemo
-                      ? navigate(data.linkDemo)
+                      ? window.open(data.linkDemo, "_blank")
                       : toast.error("Demo is not available")
                   }
                   className="flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-AlmostWhite/5 px-4 py-2 capitalize transition hover:bg-AlmostWhite/20"
@@ -54,10 +55,11 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
                   <ExternalLink />
                   {t("demo")}
                 </button>
+                {/* Code Button */}
                 <button
                   onClick={() =>
                     data.linkCode
-                      ? navigate(data.linkCode)
+                      ? window.open(data.linkCode, "_blank")
                       : toast.error("Code is not available")
                   }
                   className="flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-AlmostWhite/5 px-4 py-2 capitalize transition hover:bg-AlmostWhite/20"
