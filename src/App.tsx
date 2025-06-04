@@ -1,11 +1,10 @@
-import { useEffect } from "react"; // Hapus 'React' karena tidak lagi diperlukan secara eksplisit sejak React 17+
+import { useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useTranslation } from "react-i18next";
 import axios from "axios";
 
-// Komponen-komponen
+// Components
 import BackgroundPattern from "./components/BackgroundPattern";
 import NameTypeAnimation from "./components/NameTypeAnimation";
 import SkillList from "./components/SkillList";
@@ -13,115 +12,237 @@ import Links from "./components/Links";
 import Footer from "./components/Footer";
 import Projects from "./components/Projects";
 
-// Daftarkan plugin GSAP sekali di level modul
+// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
-// Konstanta untuk URL API dan bahasa bisa membantu maintenance
 const VISITOR_TRACKER_API_URL = "https://portfoliobackend-mv27ok25f-ridloghifarys-projects.vercel.app/api/track";
-// const LANGUAGES = {
-//   ENGLISH: "en",
-//   INDONESIAN: "id",
-// };
 
 const App: React.FC = () => {
-  const { t, i18n } = useTranslation();
+  const [isLoading, setIsLoading] = useState(true);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const heroRef = useRef<HTMLElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
 
-  // Animasi GSAP untuk loading screen
+  // Enhanced GSAP animations with modern effects
   useGSAP(() => {
-    gsap.from(".line", {
-      scrollTrigger: {
-        trigger: ".loading-screen", // Pertimbangkan untuk menggunakan ref jika elemen ini hanya ada di komponen ini
-        scrub: true,
-        pin: true,
-        start: "top top",
-        end: "+=100%",
-      },
-      scaleX: 0,
-      transformOrigin: "left center",
-      ease: "none",
+    // Loading screen animation
+    const tl = gsap.timeline();
+    
+    tl.from(".loading-screen", {
+      duration: 2,
+      opacity: 0,
+      ease: "power2.inOut"
+    })
+    .to(".loading-screen", {
+      duration: 1,
+      opacity: 0,
+      delay: 0.5,
+      onComplete: () => setIsLoading(false)
     });
-  }, []); // Tambahkan array dependensi kosong jika animasi tidak bergantung pada props/state lain
 
-  // Fungsi untuk mengganti bahasa
-  // Gunakan useCallback agar fungsi ini tidak dibuat ulang di setiap render kecuali dependensinya berubah
-  // const handleChangeLanguage = useCallback(() => {
-  //   const nextLanguage =
-  //     i18n.language === LANGUAGES.ENGLISH
-  //       ? LANGUAGES.INDONESIAN
-  //       : LANGUAGES.ENGLISH;
-  //   i18n.changeLanguage(nextLanguage);
-  // }, [i18n]); // i18n adalah dependensi di sini
+    // Parallax effect for hero section
+    gsap.from(".hero-bg", {
+      scrollTrigger: {
+        trigger: ".hero-section",
+        start: "top top",
+        end: "bottom top",
+        scrub: 1
+      },
+      y: -100,
+      opacity: 0.5
+    });
 
-  // Efek untuk melacak pengunjung
+    // Stagger animation for skill items
+    gsap.from(".skill-item", {
+      scrollTrigger: {
+        trigger: ".skills-container",
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      },
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "back.out(1.7)"
+    });
+
+    // Projects reveal animation
+    gsap.from(".project-card", {
+      scrollTrigger: {
+        trigger: ".projects-section",
+        start: "top 70%",
+        toggleActions: "play none none reverse"
+      },
+      y: 100,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.3,
+      ease: "power3.out"
+    });
+
+  }, []);
+
+  // Custom cursor effect
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+      
+      if (cursorRef.current) {
+        gsap.to(cursorRef.current, {
+          x: e.clientX - 10,
+          y: e.clientY - 10,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // Visitor tracking with enhanced error handling
   useEffect(() => {
     const trackVisitor = async () => {
       try {
-        await axios.get(VISITOR_TRACKER_API_URL);
-        // Mungkin tambahkan logging sukses jika perlu di development
-        // console.log("Visitor tracked successfully.");
+        await axios.get(VISITOR_TRACKER_API_URL, {
+          timeout: 5000,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
       } catch (error) {
-        // Menampilkan error yang lebih spesifik bisa membantu debugging
         if (axios.isAxiosError(error)) {
-          console.error(
-            "Error tracking visitor (AxiosError):",
-            error.response?.data || error.message,
-          );
+          console.error("Visitor tracking failed:", error.response?.data || error.message);
         } else {
-          console.error("Error tracking visitor (Unknown Error):", error);
+          console.error("Unexpected error during visitor tracking:", error);
         }
       }
     };
 
-    trackVisitor();
-  }, []); // Array dependensi kosong berarti ini hanya berjalan sekali saat komponen dimuat
+    const timer = setTimeout(trackVisitor, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <main className="overflow-hidden bg-AlmostBlack text-AlmostWhite">
-      <BackgroundPattern />
-      {/* <ChangeLanguage handleChangeLanguage={handleChangeLanguage} currentLanguage={i18n.language} /> */}
+    <>
+      {/* Custom Cursor */}
+      <div 
+        ref={cursorRef}
+        className="fixed w-5 h-5 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full pointer-events-none z-50 mix-blend-difference opacity-80 hidden lg:block"
+        style={{ 
+          transform: `translate(${mousePosition.x - 10}px, ${mousePosition.y - 10}px)` 
+        }}
+      />
 
-      {/* Kontainer utama untuk konten */}
-      <div className="mx-auto max-w-4xl px-4 lg:px-0 2xl:max-w-6xl">
-        {/* Bagian Hero */}
-        <section className="relative flex min-h-screen select-none flex-col items-start justify-center pt-20 md:items-start md:py-2 md:pt-0">
-          {/* Judul besar dengan efek scramble (diasumsikan dari NameTypeAnimation atau AOS) */}
-          <h1
-            id="scramble" // Pastikan ID ini unik jika diperlukan untuk styling/scripting global
-            data-aos="fade-down" // AOS untuk animasi
-            data-aos-delay="100"
-            className="Kalnia select-none text-7xl font-bold selection:bg-AlmostWhite selection:text-AlmostBlack md:text-9xl 2xl:text-[11rem]"
-          >
-            <span className="text-6xl">{t("greeting")}</span>
-            <br />
-            <NameTypeAnimation />
-          </h1>
-
-          {/* Bio dan Daftar Keahlian */}
-          <div className="mt-6 grid gap-8 md:grid-cols-2">
-            <p
-              data-aos="fade-down"
-              data-aos-delay="200"
-              className="text-xs leading-7 selection:bg-AlmostWhite selection:text-AlmostBlack sm:text-sm md:text-base 2xl:text-lg"
-            >
-              {t("bio")}
-            </p>
-            <SkillList />
+      {/* Loading Screen */}
+      {isLoading && (
+        <div className="loading-screen fixed inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center z-50">
+          <div className="relative">
+            <div className="w-20 h-20 border-4 border-transparent border-t-cyan-400 border-r-purple-500 rounded-full animate-spin"></div>
+            <div className="absolute inset-0 w-16 h-16 m-auto border-4 border-transparent border-t-purple-400 border-l-cyan-500 rounded-full animate-spin animate-reverse"></div>
           </div>
+        </div>
+      )}
 
-          <Links />
-        </section>
+      <main className="overflow-hidden bg-gradient-to-br from-slate-900 via-gray-900 to-black text-white relative">
+        {/* Background Elements */}
+        <div className="hero-bg absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-pink-500/10"></div>
+        <BackgroundPattern />
+        
+        {/* Floating orbs */}
+        <div className="fixed top-20 left-10 w-32 h-32 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-full blur-xl animate-pulse"></div>
+        <div className="fixed bottom-20 right-10 w-40 h-40 bg-gradient-to-r from-purple-400/20 to-pink-500/20 rounded-full blur-xl animate-pulse delay-1000"></div>
 
-        {/* Elemen untuk animasi loading line GSAP */}
-        <div className="loading-screen" aria-hidden="true"> {/* aria-hidden karena ini elemen visual murni */}
-          <div className="line" />
+        <div className="mx-auto max-w-6xl px-6 lg:px-8 2xl:max-w-7xl relative z-10">
+          {/* Hero Section */}
+          <section 
+            ref={heroRef}
+            className="hero-section relative flex min-h-screen select-none flex-col items-start justify-center pt-20 md:items-start md:py-2 md:pt-0"
+          >
+            {/* Glassmorphism card */}
+            <div className="absolute inset-0 bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 shadow-2xl"></div>
+            
+            <div className="relative z-10 w-full">
+              <h1
+                id="scramble"
+                data-aos="fade-down"
+                data-aos-delay="100"
+                className="Kalnia select-none text-6xl font-black bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent md:text-8xl 2xl:text-[10rem] leading-tight"
+                style={{ 
+                  filter: "drop-shadow(0 0 30px rgba(139, 92, 246, 0.3))" 
+                }}
+              >
+                <span className="block text-2xl md:text-4xl font-light text-gray-300 mb-4">
+                  Hello, I'm
+                </span>
+                <NameTypeAnimation />
+              </h1>
+
+              {/* Enhanced Bio and Skills Grid */}
+              <div className="mt-12 grid gap-12 md:grid-cols-2 lg:gap-16">
+                <div className="space-y-6">
+                  <p
+                    data-aos="fade-right"
+                    data-aos-delay="200"
+                    className="text-lg leading-relaxed text-gray-300 backdrop-blur-sm bg-white/5 p-6 rounded-2xl border border-white/10"
+                  >
+                    Passionate full-stack developer crafting digital experiences 
+                    that blend innovation with functionality. I transform ideas 
+                    into elegant, user-centric solutions.
+                  </p>
+                  
+                  {/* Status indicator */}
+                  <div className="flex items-center space-x-3 text-sm">
+                    <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
+                    <span className="text-green-400 font-medium">Available for projects</span>
+                  </div>
+                </div>
+
+                <div className="skills-container">
+                  <SkillList />
+                </div>
+              </div>
+
+              {/* Enhanced Links Section */}
+              <div className="mt-16" data-aos="fade-up" data-aos-delay="400">
+                <Links />
+              </div>
+            </div>
+          </section>
+
+          {/* Transition Element */}
+          <div className="h-32 bg-gradient-to-b from-transparent to-slate-900/50"></div>
+
+          {/* Projects Section */}
+          <section className="projects-section py-20">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-4">
+                Featured Projects
+              </h2>
+              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                Discover my latest work and creative solutions
+              </p>
+            </div>
+            <Projects t={() => {}} />
+          </section>
         </div>
 
-        {/* Bagian Proyek */}
-        <Projects t={t} /> {/* Melewatkan fungsi 't' untuk translasi di dalam Projects */}
-      </div>
+        {/* Enhanced Footer */}
+        <div className="mt-32">
+          <Footer />
+        </div>
 
-      <Footer />
-    </main>
+        {/* Scroll indicator */}
+        <div className="fixed right-8 top-1/2 transform -translate-y-1/2 hidden lg:flex flex-col items-center space-y-2 z-40">
+          <div className="w-px h-16 bg-gradient-to-b from-transparent via-cyan-400 to-transparent"></div>
+          <div className="w-2 h-8 border border-cyan-400/50 rounded-full">
+            <div className="w-1 h-2 bg-cyan-400 rounded-full mx-auto mt-1 animate-bounce"></div>
+          </div>
+          <div className="w-px h-16 bg-gradient-to-b from-transparent via-cyan-400 to-transparent"></div>
+        </div>
+      </main>
+    </>
   );
 };
 
