@@ -9,8 +9,8 @@
   {
     "title": "IoT Smart Light Management",
     "desc": "A web-based IoT platform to control and monitor smart lighting systems using ESP32, Express.JS and MySQL. Includes real-time status updates, scheduling, and secure access.",
-    "image": "images/iot-smart-light.png",
-    "linkDemo": "https://your-demo-link.com",
-    "linkCode": "https://github.com/your-username/iot-smart-light"
+    "image": "images/carrental.png",
+    "linkDemo": "https://sla-iot.ariandto.cloud",
+    "linkCode": "https://github.com/ariandto/iotskripsinew"
   }
 ]
