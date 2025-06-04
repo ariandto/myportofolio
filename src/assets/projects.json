@@ -2,8 +2,8 @@
   {
     "title": "To-Do App with Google Auth",
     "desc": "A modern and responsive To-Do List application built with React and Firebase. Features include Google Sign-In, real-time task management, and PWA support for mobile use.",
-    "image": "/images/todo-app.png",
-    "linkDemo": "https://https://firebasereacttodo.vercel.app/",
+    "image": "/images/todoapp.png",
+    "linkDemo": "https://firebasereacttodo.vercel.app/",
     "linkCode": "https://github.com/ariandto/firebasereacttodo"
   },
   {
