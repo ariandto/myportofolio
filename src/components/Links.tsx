@@ -12,12 +12,12 @@ const Links: React.FC = () => {
           Medium
         </Link>
       </li> */}
-      <li className="h-fit w-fit text-center py-8 text-xs hover:underline sm:text-xs md:text-base lg:rotate-90">
+      <li className="h-fit w-fit text-center py-8 px-8 text-xs hover:underline sm:text-xs md:text-base lg:rotate-90">
         <Link to={"https://github.com/ariandto/"} target="_blank">
           Github
         </Link>
       </li>
-      <li className="h-fit w-fit text-center py-8 text-xs hover:underline sm:text-xs md:text-base lg:rotate-90">
+      <li className="h-fit w-fit text-center py-8 px-8 text-xs hover:underline sm:text-xs md:text-base lg:rotate-90">
         <Link to={"https://www.linkedin.com/in/budi-ariyanto-7a4564199/"} target="_blank">
           LinkedIn
         </Link>
