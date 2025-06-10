@@ -189,7 +189,7 @@ const App: React.FC = () => {
                   >
                     Passionate full-stack developer crafting digital experiences 
                     that blend innovation with functionality. I transform ideas 
-                    into elegant, user-centric solutions.Test
+                    into elegant, user-centric solutions.
                   </p>
                   
                   {/* Status indicator - Mobile optimized */}
