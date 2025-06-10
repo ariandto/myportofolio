@@ -173,7 +173,7 @@ const App: React.FC = () => {
                   filter: "drop-shadow(0 0 30px rgba(139, 92, 246, 0.3))" 
                 }}
               >
-                <span className="block text-lg sm:text-2xl md:text-4xl font-light text-gray-300 mb-8 sm:mb-4">
+                <span className="block text-lg sm:text-2xl md:text-4xl font-light text-gray-300 mb-2 sm:mb-4">
                   Hello, I'm
                 </span>
                 <NameTypeAnimation />
