@@ -205,7 +205,7 @@ const App: React.FC = () => {
               </div>
 
               {/* Enhanced Links Section - Mobile spacing //before  mt-12 sm:mt-12 lg:mt-16 after */} 
-              <div className="mt-16 mb-12 sm:mt-16 lg:mt-20" data-aos="fade-up" data-aos-delay="400">
+              <div className="mt-12 sm:mt-12 lg:mt-16" data-aos="fade-up" data-aos-delay="400">
                 <Links />
               </div>
             </div>
