@@ -16,7 +16,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images, alt }) => {
   const [idx, setIdx] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const delay = 4000; // 4 detik untuk lebih nyaman
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const next = () => setIdx((i) => (i + 1) % images.length);
   const prev = () => setIdx((i) => (i - 1 + images.length) % images.length);
