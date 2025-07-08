@@ -1,11 +1,11 @@
 // src/components/Projects.tsx
 import React, { useEffect, useRef, useState } from "react";
 import projectList from "../assets/projects.json";
-import { Code, ExternalLink } from "lucide-react";
+import { Code, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import toast from "react-hot-toast";
 
 /* -------------------------------------------------------------------------- */
-/* 1. ImageSlider – menampilkan 1 gambar & auto-slide tiap 3 detik            */
+/* 1. ImageSlider – menampilkan gambar dengan auto-slide dan kontrol manual   */
 /* -------------------------------------------------------------------------- */
 interface ImageSliderProps {
   images: string[];
@@ -14,37 +14,78 @@ interface ImageSliderProps {
 
 const ImageSlider: React.FC<ImageSliderProps> = ({ images, alt }) => {
   const [idx, setIdx] = useState(0);
-  const delay = 3000;
-  type Timeout = ReturnType<typeof setTimeout>; // <-- tambahkan
-  const timeoutRef = useRef<Timeout | null>(null); // <-- diperbaiki
+  const [isPlaying, setIsPlaying] = useState(true);
+  const delay = 4000; // 4 detik untuk lebih nyaman
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const next = () => setIdx((i) => (i + 1) % images.length);
+  const prev = () => setIdx((i) => (i - 1 + images.length) % images.length);
+
+  const resetTimer = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+  };
+
+  const startTimer = () => {
+    if (isPlaying && images.length > 1) {
+      resetTimer();
+      timeoutRef.current = setTimeout(next, delay);
+    }
+  };
 
   useEffect(() => {
-    // set timer baru
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(next, delay);
+    startTimer();
+    return () => resetTimer();
+  }, [idx, images.length, isPlaying]);
 
-    // 🛠️ cleanup harus meng-clear timer & tidak mengembalikan apa-apa
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-        timeoutRef.current = null; // opsi: reset ke null
-      }
-    };
-  }, [idx, images.length]);
+  const handleMouseEnter = () => {
+    setIsPlaying(false);
+    resetTimer();
+  };
 
-  const pause = () => timeoutRef.current && clearTimeout(timeoutRef.current);
+  const handleMouseLeave = () => {
+    setIsPlaying(true);
+  };
+
+  const handleManualNext = () => {
+    resetTimer();
+    next();
+  };
+
+  const handleManualPrev = () => {
+    resetTimer();
+    prev();
+  };
+
+  const goToSlide = (index: number) => {
+    resetTimer();
+    setIdx(index);
+  };
+
+  // Jika hanya ada 1 gambar, tampilkan tanpa slider
+  if (images.length === 1) {
+    return (
+      <div className="relative h-[300px] w-full overflow-hidden rounded-lg">
+        <img
+          src={import.meta.env.BASE_URL + images[0]}
+          alt={alt}
+          className="h-full w-full object-cover object-top"
+        />
+      </div>
+    );
+  }
 
   return (
     <div
-      onMouseEnter={pause}
-      onMouseLeave={() => (timeoutRef.current = setTimeout(next, delay))}
-      className="relative h-[300px] w-full overflow-hidden rounded-lg"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className="group relative h-[300px] w-full overflow-hidden rounded-lg"
     >
-      {/* Rail */}
+      {/* Rail gambar */}
       <div
-        className="flex h-full w-full transition-transform duration-500 ease-in-out"
+        className="flex h-full w-full transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${idx * 100}%)` }}
       >
         {images.map((src, i) => (
@@ -57,20 +98,54 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images, alt }) => {
         ))}
       </div>
 
+      {/* Tombol navigasi kiri */}
+      <button
+        onClick={handleManualPrev}
+        className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-AlmostBlack/60 p-2 text-AlmostWhite opacity-0 transition-opacity hover:bg-AlmostBlack/80 group-hover:opacity-100"
+        aria-label="Previous image"
+      >
+        <ChevronLeft size={20} />
+      </button>
+
+      {/* Tombol navigasi kanan */}
+      <button
+        onClick={handleManualNext}
+        className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-AlmostBlack/60 p-2 text-AlmostWhite opacity-0 transition-opacity hover:bg-AlmostBlack/80 group-hover:opacity-100"
+        aria-label="Next image"
+      >
+        <ChevronRight size={20} />
+      </button>
+
       {/* Bullet indicator */}
-      {images.length > 1 && (
-        <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 gap-2">
-          {images.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setIdx(i)}
-              className={`h-2 w-2 rounded-full ${
-                i === idx ? "bg-AlmostWhite" : "bg-AlmostWhite/40"
-              }`}
-            />
-          ))}
-        </div>
-      )}
+      <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-2">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => goToSlide(i)}
+            className={`h-2 w-2 rounded-full transition-all duration-300 ${
+              i === idx 
+                ? "bg-AlmostWhite w-6" 
+                : "bg-AlmostWhite/40 hover:bg-AlmostWhite/60"
+            }`}
+            aria-label={`Go to image ${i + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Progress bar */}
+      <div className="absolute bottom-0 left-0 h-1 w-full bg-AlmostBlack/20">
+        <div
+          className={`h-full bg-SecondaryColor transition-all duration-300 ${
+            isPlaying ? 'animate-pulse' : ''
+          }`}
+          style={{ width: `${((idx + 1) / images.length) * 100}%` }}
+        />
+      </div>
+
+      {/* Image counter */}
+      <div className="absolute top-3 right-3 rounded-full bg-AlmostBlack/60 px-3 py-1 text-sm text-AlmostWhite">
+        {idx + 1} / {images.length}
+      </div>
     </div>
   );
 };
