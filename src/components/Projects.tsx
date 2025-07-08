@@ -26,11 +26,13 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
                 index % 2 === 0 ? "md:order-last" : "" // Menggunakan "" jika null tidak diinginkan
               } cursor-pointer select-none rounded-lg`}
             >
-              <img
-                src={import.meta.env.BASE_URL + data.image} // Baris ini sudah benar dengan JSON yang direvisi
-                alt={data.title}
-                className="h-[300px] w-full rounded-lg object-cover object-top transition-all duration-[7s] ease-linear hover:object-bottom"
-              />
+              {data.images && data.images.length > 0 && (
+                <img
+                  src={import.meta.env.BASE_URL + data.images[0]}
+                  alt={data.title}
+                  className="h-[300px] w-full rounded-lg object-cover object-top transition-all duration-[7s] ease-linear hover:object-bottom"
+                />
+              )}
             </div>
             <div data-aos="fade-left" className="space-y-6 text-center">
               <h2 className="Kalnia text-5xl font-semibold text-SecondaryColor selection:bg-SecondaryColor selection:text-AlmostBlack">
@@ -47,10 +49,13 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
               <div className="flex select-none items-center justify-center gap-5">
                 {/* Demo Button */}
                 <button
-                  onClick={() =>
-                    data.linkDemo
-                      ? window.open(data.linkDemo, "_blank")
-                      : toast.error(t("demoNotAvailable") || "Demo is not available") // Gunakan t() untuk pesan error jika ada
+                  onClick={
+                    () =>
+                      data.linkDemo
+                        ? window.open(data.linkDemo, "_blank")
+                        : toast.error(
+                            t("demoNotAvailable") || "Demo is not available",
+                          ) // Gunakan t() untuk pesan error jika ada
                   }
                   className="flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-AlmostWhite/5 px-4 py-2 capitalize transition hover:bg-AlmostWhite/20"
                 >
@@ -59,10 +64,13 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
                 </button>
                 {/* Code Button */}
                 <button
-                  onClick={() =>
-                    data.linkCode
-                      ? window.open(data.linkCode, "_blank")
-                      : toast.error(t("codeNotAvailable") || "Code is not available") // Gunakan t() untuk pesan error jika ada
+                  onClick={
+                    () =>
+                      data.linkCode
+                        ? window.open(data.linkCode, "_blank")
+                        : toast.error(
+                            t("codeNotAvailable") || "Code is not available",
+                          ) // Gunakan t() untuk pesan error jika ada
                   }
                   className="flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-AlmostWhite/5 px-4 py-2 capitalize transition hover:bg-AlmostWhite/20"
                 >
