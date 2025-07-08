@@ -1,4 +1,4 @@
-import React from "react";
+ import React from "react"; 
 import { Link } from "react-router-dom";
 
 const Links: React.FC = () => {
@@ -17,7 +17,7 @@ const Links: React.FC = () => {
           Github
         </Link>
       </li>
-      <li className="h-fit w-fit text-center text-xs hover:underline sm:text-xs md:text-base lg:rotate-90">
+      <li className="h-fit w-fit text-center  text-xs hover:underline sm:text-xs md:text-base lg:rotate-90">
         <Link to={"https://www.linkedin.com/in/budi-ariyanto-7a4564199/"} target="_blank">
           LinkedIn
         </Link>
