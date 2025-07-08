@@ -12,5 +12,18 @@
     "image": "images/carrental.png",
     "linkDemo": "https://sla-iot.ariandto.cloud",
     "linkCode": "https://github.com/ariandto/iotskripsinew"
+  },
+
+  {
+    "title": "Smart Door Control",
+    "desc": "A web-based IoT platform to control and monitor door systems using ESP32, Express, React Js, Firebase. Includes real-time status updates, and secure access.",
+    "images": [
+      "images/smartdoorview1.png",
+      "images/smartdoorview2.png",
+      "images/smartdoorview3.png",
+      "images/smartdoorview4.png"
+    ],
+    "linkDemo": "https://sdl.ariandto.cloud",
+    "linkCode": "https://github.com/ariandto/sdlappsfrontend"
   }
 ]
