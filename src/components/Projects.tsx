@@ -45,27 +45,25 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
             >
               {/* ---------------- GAMBAR / SLIDER ---------------- */}
               <div
-                data-aos="fade-right"
-                className={`cursor-pointer select-none rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 ${
-                  index % 2 === 0 ? "md:order-last" : ""
-                }`}
-              >
-                {/* 👉 Jika >1 gambar pakai slider, else <img> */}
-                {imagesArr.length > 1 ? (
-                  <ImageSlider
-                    images={imagesArr.map(
-                      (src) => import.meta.env.BASE_URL + src,
-                    )}
-                    alt={data.title}
-                  />
-                ) : (
-                  <img
-                    src={import.meta.env.BASE_URL + imagesArr[0]}
-                    alt={data.title}
-                    className="h-[300px] w-full rounded-xl object-cover object-top transition-all duration-[7s] ease-linear hover:object-bottom"
-                  />
-                )}
-              </div>
+  data-aos="fade-right"
+  className={`w-full xl:col-span-2 xl:-mx-8 xl:px-0 cursor-pointer select-none rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 ${
+    index % 2 === 0 ? "md:order-last" : ""
+  }`}
+>
+  {imagesArr.length > 1 ? (
+    <ImageSlider
+      images={imagesArr.map((src) => import.meta.env.BASE_URL + src)}
+      alt={data.title}
+    />
+  ) : (
+    <img
+      src={import.meta.env.BASE_URL + imagesArr[0]}
+      alt={data.title}
+      className="w-full h-auto max-h-[520px] rounded-xl object-cover object-top aspect-video transition-all duration-[7s] ease-linear hover:object-bottom"
+    />
+  )}
+</div>
+
 
               {/* ---------------- DESKRIPSI ---------------- */}
               <div data-aos="fade-left" className="space-y-6 text-center">
