@@ -17,16 +17,24 @@ interface ProjectItem {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Projects: React.FC<{ t: any }> = ({ t }) => {
   return (
-    <section id="main-element" className="py-40">
-      {/* Judul */}
+    <section id="main-element" className="py-40 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+      {/* Judul dengan tipografi modern */}
       <h1
         data-aos="fade-down"
-        className="Kalnia custom-h1 text-center text-6xl font-bold uppercase text-blue-500 selection:bg-AlmostBlack selection:text-AlmostWhite before:stroke-AlmostWhite md:text-8xl"
+        className="text-center text-6xl font-black uppercase tracking-tight md:text-8xl"
+        style={{
+          fontFamily: "'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif",
+          background: "linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
+          textShadow: "0 4px 20px rgba(59, 130, 246, 0.3)"
+        }}
       >
         {t("project")}
       </h1>
 
-      <div className="space-y-6">
+      <div className="space-y-12 mt-20">
         {projectList.map((data: ProjectItem, index) => {
           /* Normalisasi images → selalu array */
           const imagesArr = Array.isArray(data.images)
@@ -37,12 +45,12 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
             <div
               key={index}
               data-aos="fade-up"
-              className="mt-16 grid items-center gap-4 rounded-xl border border-AlmostWhite/50 p-5 md:grid-cols-2"
+              className="grid items-center gap-8 rounded-2xl border border-blue-200/60 p-8 shadow-lg bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300 md:grid-cols-2 hover:border-blue-300/80"
             >
               {/* ---------------- GAMBAR / SLIDER ---------------- */}
               <div
                 data-aos="fade-right"
-                className={`cursor-pointer select-none rounded-lg ${
+                className={`cursor-pointer select-none rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 ${
                   index % 2 === 0 ? "md:order-last" : ""
                 }`}
               >
@@ -52,30 +60,43 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
                     images={imagesArr.map(
                       (src) => import.meta.env.BASE_URL + src,
                     )}
-                    
                     alt={data.title}
                   />
                 ) : (
                   <img
                     src={import.meta.env.BASE_URL + imagesArr[0]}
                     alt={data.title}
-                    className="h-[300px] w-[115%] rounded-lg object-cover object-top transition-all duration-[7s] ease-linear hover:object-bottom"
+                    className="h-[300px] w-full rounded-xl object-cover object-top transition-all duration-[7s] ease-linear hover:object-bottom"
                   />
                 )}
               </div>
 
               {/* ---------------- DESKRIPSI ---------------- */}
               <div data-aos="fade-left" className="space-y-6 text-center">
-                <h2 className="Kalnia text-5xl font-semibold text-SecondaryColor selection:bg-SecondaryColor selection:text-AlmostBlack">
+                <h2 
+                  className="text-4xl md:text-5xl font-bold tracking-tight"
+                  style={{
+                    fontFamily: "'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif",
+                    background: "linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #2563eb 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text"
+                  }}
+                >
                   {data.title}
                 </h2>
 
-                <p className="font-light selection:bg-AlmostWhite selection:text-AlmostBlack">
+                <p 
+                  className="text-slate-600 leading-relaxed text-lg font-normal"
+                  style={{
+                    fontFamily: "'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif"
+                  }}
+                >
                   {data.desc}
                 </p>
 
                 {/* ---------------- CTA BUTTONS ---------------- */}
-                <div className="flex select-none justify-center gap-5">
+                <div className="flex select-none justify-center gap-4 pt-4">
                   {/* Demo */}
                   <button
                     onClick={() =>
@@ -85,9 +106,12 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
                             t("demoNotAvailable") || "Demo is not available",
                           )
                     }
-                    className="flex items-center gap-2 rounded-xl bg-AlmostWhite/5 px-4 py-2 capitalize transition hover:bg-AlmostWhite/20"
+                    className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 px-6 py-3 text-white font-semibold capitalize transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                    style={{
+                      fontFamily: "'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif"
+                    }}
                   >
-                    <ExternalLink />
+                    <ExternalLink size={18} />
                     {t("demo")}
                   </button>
 
@@ -100,9 +124,12 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
                             t("codeNotAvailable") || "Code is not available",
                           )
                     }
-                    className="flex items-center gap-2 rounded-xl bg-AlmostWhite/5 px-4 py-2 capitalize transition hover:bg-AlmostWhite/20"
+                    className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 px-6 py-3 text-white font-semibold capitalize transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                    style={{
+                      fontFamily: "'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif"
+                    }}
                   >
-                    <Code />
+                    <Code size={18} />
                     {t("code")}
                   </button>
                 </div>
