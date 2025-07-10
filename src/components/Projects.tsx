@@ -21,13 +21,9 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
       {/* Judul dengan tipografi modern */}
       <h1
         data-aos="fade-down"
-        className="text-center text-6xl font-black uppercase tracking-tight md:text-8xl"
+        className="text-center text-6xl font-black uppercase tracking-tight md:text-8xl bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-4"
         style={{
           fontFamily: "'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif",
-          background: "linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
           textShadow: "0 4px 20px rgba(59, 130, 246, 0.3)"
         }}
       >
@@ -74,13 +70,9 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
               {/* ---------------- DESKRIPSI ---------------- */}
               <div data-aos="fade-left" className="space-y-6 text-center">
                 <h2 
-                  className="text-4xl md:text-5xl font-bold tracking-tight"
+                  className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-2 sm:mb-4 tracking-tight"
                   style={{
-                    fontFamily: "'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif",
-                    background: "linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #2563eb 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text"
+                    fontFamily: "'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif"
                   }}
                 >
                   {data.title}
