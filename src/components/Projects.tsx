@@ -4,12 +4,12 @@ import projectList from "../assets/projects.json";
 import { Code, ExternalLink } from "lucide-react";
 import toast from "react-hot-toast";
 
-import ImageSlider from "./ImageSlider";          // ⬅️ pastikan path ini benar
+import ImageSlider from "./ImageSlider"; // ⬅️ pastikan path ini benar
 
 interface ProjectItem {
   title: string;
   desc: string;
-  images: string[] | string;                     // array ⬅️ untuk slider, string ⬅️ untuk 1 gambar
+  images: string[] | string; // array ⬅️ untuk slider, string ⬅️ untuk 1 gambar
   linkDemo?: string;
   linkCode?: string;
 }
@@ -50,7 +50,7 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
                 {imagesArr.length > 1 ? (
                   <ImageSlider
                     images={imagesArr.map(
-                      (src) => import.meta.env.BASE_URL + src
+                      (src) => import.meta.env.BASE_URL + src,
                     )}
                     alt={data.title}
                   />
@@ -74,14 +74,14 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
                 </p>
 
                 {/* ---------------- CTA BUTTONS ---------------- */}
-                <div className="flex justify-center gap-5 select-none">
+                <div className="flex select-none justify-center gap-5">
                   {/* Demo */}
                   <button
                     onClick={() =>
                       data.linkDemo
                         ? window.open(data.linkDemo, "_blank")
                         : toast.error(
-                            t("demoNotAvailable") || "Demo is not available"
+                            t("demoNotAvailable") || "Demo is not available",
                           )
                     }
                     className="flex items-center gap-2 rounded-xl bg-AlmostWhite/5 px-4 py-2 capitalize transition hover:bg-AlmostWhite/20"
@@ -96,7 +96,7 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
                       data.linkCode
                         ? window.open(data.linkCode, "_blank")
                         : toast.error(
-                            t("codeNotAvailable") || "Code is not available"
+                            t("codeNotAvailable") || "Code is not available",
                           )
                     }
                     className="flex items-center gap-2 rounded-xl bg-AlmostWhite/5 px-4 py-2 capitalize transition hover:bg-AlmostWhite/20"
