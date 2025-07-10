@@ -17,7 +17,7 @@ interface ProjectItem {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Projects: React.FC<{ t: any }> = ({ t }) => {
   return (
-    <section id="main-element" className="py-40 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <section id="main-element" className="py-40">
       {/* Judul dengan tipografi modern */}
       <h1
         data-aos="fade-down"
@@ -45,7 +45,7 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
             <div
               key={index}
               data-aos="fade-up"
-              className="grid items-center gap-8 rounded-2xl border border-blue-200/60 p-8 shadow-lg bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300 md:grid-cols-2 hover:border-blue-300/80"
+              className="grid items-center gap-8 rounded-2xl border border-blue-200/60 p-8 shadow-lg bg-transparent backdrop-blur-sm hover:shadow-xl transition-all duration-300 md:grid-cols-2 hover:border-blue-300/80"
             >
               {/* ---------------- GAMBAR / SLIDER ---------------- */}
               <div
