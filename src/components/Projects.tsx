@@ -58,7 +58,8 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
                   <img
                     src={import.meta.env.BASE_URL + imagesArr[0]}
                     alt={data.title}
-                    className="h-[300px] w-full rounded-lg object-cover object-top transition-all duration-[7s] ease-linear hover:object-bottom"
+                    className="h-[300px] w-full scale-[1.15] transform rounded-lg object-cover object-top transition-all duration-[7s] ease-linear hover:object-bottom"
+
                   />
                 )}
               </div>
