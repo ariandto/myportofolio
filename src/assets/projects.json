@@ -4,9 +4,7 @@
     "desc": "A modern and responsive To-Do List application built with React and Firebase. Features include Google Sign-In, real-time task management, and PWA support for mobile use.",
     "images": [
       "images/todo1.png",
-      "images/todo2.png",
-      "images/todo3.png",
-      "images/todo4.png"
+      "images/todo2.png"
     ],
     "linkDemo": "https://firebasereacttodo.vercel.app/",
     "linkCode": "https://github.com/ariandto/firebasereacttodo"
@@ -16,9 +14,7 @@
     "desc": "A web-based IoT platform to control and monitor smart lighting systems using ESP32, Express.JS and MySQL. Includes real-time status updates, scheduling, and secure access.",
      "images": [
       "images/smart1.png",
-      "images/smart2.png",
-      "images/smart3.png",
-      "images/smart4.png"
+      "images/smart2.png"
     ],
     "linkDemo": "https://sla-iot.ariandto.cloud",
     "linkCode": "https://github.com/ariandto/iotskripsinew"
