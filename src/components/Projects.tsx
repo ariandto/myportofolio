@@ -21,7 +21,7 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
       {/* Judul */}
       <h1
         data-aos="fade-down"
-        className="Kalnia custom-h1 text-center text-6xl font-bold uppercase selection:bg-AlmostBlack selection:text-AlmostWhite before:stroke-AlmostWhite md:text-8xl"
+        className="Kalnia custom-h1 text-center text-6xl font-bold uppercase text-blue-500 selection:bg-AlmostBlack selection:text-AlmostWhite before:stroke-AlmostWhite md:text-8xl"
       >
         {t("project")}
       </h1>
@@ -52,6 +52,7 @@ const Projects: React.FC<{ t: any }> = ({ t }) => {
                     images={imagesArr.map(
                       (src) => import.meta.env.BASE_URL + src,
                     )}
+                    
                     alt={data.title}
                   />
                 ) : (
