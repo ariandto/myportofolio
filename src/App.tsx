@@ -200,7 +200,7 @@ const App: React.FC = () => {
 
                   <div className="skills-container mt-6 md:mt-0">
                   <SkillList />
-                  <div className="mt-8 sm:mt-12 lg:mt-16" data-aos="fade-up" data-aos-delay="400">
+                    <div className="mt-8 sm:mt-12 lg:mt-16" data-aos="fade-up" data-aos-delay="400">
                 <Links />
               </div>
                 </div>
