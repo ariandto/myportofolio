@@ -201,11 +201,13 @@ const App: React.FC = () => {
                     <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
                     <span className="text-green-400 font-medium">Available for projects</span>
                   </div>
-                </div>
 
-                <div className="skills-container mt-6 md:mt-0">
+                  <div className="skills-container mt-6 md:mt-0">
                   <SkillList />
                 </div>
+                </div>
+
+              
               </div>
 
               {/* Enhanced Links Section - Mobile spacing */}
