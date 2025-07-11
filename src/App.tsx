@@ -197,20 +197,16 @@ const App: React.FC = () => {
                     <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
                     <span className="text-green-400 font-medium">Available for projects</span>
                   </div>
+                </div>
 
-                  <div className="skills-container mt-6 md:mt-0">
+                <div className="skills-container">
                   <SkillList />
-                    <div className="mt-8 sm:mt-12 lg:mt-16" data-aos="fade-up" data-aos-delay="400">
-                <Links />
-              </div>
+                  {/* Links Section - Now positioned below SkillList */}
+                  <div className="mt-8 sm:mt-12 lg:mt-16" data-aos="fade-up" data-aos-delay="400">
+                    <Links />
+                  </div>
                 </div>
-                </div>
-
-              
               </div>
-
-              {/* Enhanced Links Section - Mobile spacing */}
-             
             </div>
           </section>
 
