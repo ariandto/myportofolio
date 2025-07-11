@@ -191,10 +191,6 @@ const App: React.FC = () => {
                     that blend innovation with functionality. I transform ideas 
                     into elegant, user-centric solutions.
                   </p>
-
-                   <div className="mt-8 sm:mt-12 lg:mt-16" data-aos="fade-up" data-aos-delay="400">
-                <Links />
-              </div>
                   
                   {/* Status indicator - Mobile optimized */}
                   <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm">
@@ -204,6 +200,9 @@ const App: React.FC = () => {
 
                   <div className="skills-container mt-6 md:mt-0">
                   <SkillList />
+                  <div className="mt-8 sm:mt-12 lg:mt-16" data-aos="fade-up" data-aos-delay="400">
+                <Links />
+              </div>
                 </div>
                 </div>
 
