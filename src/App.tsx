@@ -15,7 +15,7 @@ import Projects from "./components/Projects";
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
-const VISITOR_TRACKER_API_URL = "https://portfoliobackend-mv27ok25f-ridloghifarys-projects.vercel.app/api/track";
+// const VISITOR_TRACKER_API_URL = "https://portfoliobackend-mv27ok25f-ridloghifarys-projects.vercel.app/api/track";
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -102,27 +102,27 @@ const App: React.FC = () => {
   }, []);
 
   // Visitor tracking with enhanced error handling
-  useEffect(() => {
-    const trackVisitor = async () => {
-      try {
-        await axios.get(VISITOR_TRACKER_API_URL, {
-          timeout: 5000,
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          console.error("Visitor tracking failed:", error.response?.data || error.message);
-        } else {
-          console.error("Unexpected error during visitor tracking:", error);
-        }
-      }
-    };
+  // useEffect(() => {
+  //   const trackVisitor = async () => {
+  //     try {
+  //       await axios.get(VISITOR_TRACKER_API_URL, {
+  //         timeout: 5000,
+  //         headers: {
+  //           'Content-Type': 'application/json'
+  //         }
+  //       });
+  //     } catch (error) {
+  //       if (axios.isAxiosError(error)) {
+  //         console.error("Visitor tracking failed:", error.response?.data || error.message);
+  //       } else {
+  //         console.error("Unexpected error during visitor tracking:", error);
+  //       }
+  //     }
+  //   };
 
-    const timer = setTimeout(trackVisitor, 1000);
-    return () => clearTimeout(timer);
-  }, []);
+  //   const timer = setTimeout(trackVisitor, 1000);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   return (
     <>
