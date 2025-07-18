@@ -21,7 +21,7 @@ const SkillList: React.FC = () => {
     { src: "https://skillicons.dev/icons?i=mysql", alt: "mysql logo" },
     { src: "https://skillicons.dev/icons?i=express", alt: "express logo" },
     { src: "https://skillicons.dev/icons?i=nodejs", alt: "nodejs logo" },
-    { src: "https://skillicons.dev/icons?i=golang", alt: "golang logo" },
+    { src: "https://skillicons.dev/icons?i=go", alt: "golang logo" },
   ];
 
   return (
