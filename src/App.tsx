@@ -136,14 +136,6 @@ const App: React.FC = () => {
             {/* Glassmorphism card - Mobile optimized */}
             {/* <div className="absolute inset-2 rounded-2xl border border-white/10 bg-white/5 shadow-2xl backdrop-blur-sm sm:inset-0 sm:rounded-3xl"></div> */}
             <div className="relative z-10 w-full p-4 sm:p-6 lg:p-8">
-              <div
-                className="mt-8 flex justify-end pr-4 sm:mt-12 sm:pr-6 lg:mt-14"
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
-                <Links />
-              </div>
-
               <h1
                 id="scramble"
                 data-aos="fade-down"
@@ -214,6 +206,7 @@ const App: React.FC = () => {
           </div>
           <div className="h-12 w-px bg-gradient-to-b from-transparent via-cyan-400 to-transparent sm:h-16"></div>
         </div>
+        <Links />
       </main>
     </>
   );
