@@ -10,6 +10,7 @@ import SkillList from "./components/SkillList";
 import Links from "./components/Links";
 import Footer from "./components/Footer";
 import Projects from "./components/Projects";
+import DownloadCV from "./components/DownloadCV";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -179,6 +180,7 @@ const App: React.FC = () => {
                   >
                     <Links />
                   </div>
+                  <DownloadCV />
                 </div>
               </div>
             </div>
