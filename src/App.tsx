@@ -137,7 +137,7 @@ const App: React.FC = () => {
             <div className="absolute inset-2 rounded-2xl border border-white/10 bg-white/5 shadow-2xl backdrop-blur-sm sm:inset-0 sm:rounded-3xl"></div>
             <div className="relative z-10 w-full p-4 sm:p-6 lg:p-8">
               <div
-                className="mt-8 flex justify-end pr-8 sm:mt-12 sm:pr-6 lg:mt-14"
+                className="mt-8 flex justify-end pr-4 sm:mt-12 sm:pr-6 lg:mt-14"
                 data-aos="fade-up"
                 data-aos-delay="400"
               >

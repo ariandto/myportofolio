@@ -4,10 +4,13 @@ const Links: React.FC = () => {
   return (
     <ul
       data-aos="fade-left"
-      className="absolute right-[0%] top-0 mt-3 flex w-full items-center gap-5 selection:bg-AlmostWhite selection:text-AlmostBlack lg:-right-28 lg:bottom-[100px] lg:top-auto lg:mt-0 lg:h-full lg:w-fit lg:translate-x-0 lg:flex-col lg:justify-end lg:gap-14"
+      className="flex justify-end pr-4 gap-5 
+                 sm:pr-6 
+                 lg:absolute lg:right-8 lg:bottom-[100px] lg:top-auto 
+                 lg:flex-col lg:gap-14"
     >
       {/* GitHub */}
-      <li className="h-fit w-fit text-center text-xs sm:text-xs md:text-base lg:rotate-90">
+      <li className="h-fit w-fit text-center text-xs sm:text-xs md:text-base">
         <a
           href="https://github.com/ariandto"
           target="_blank"
@@ -19,8 +22,9 @@ const Links: React.FC = () => {
           </svg>
         </a>
       </li>
+
       {/* LinkedIn */}
-      <li className="h-fit w-fit text-center text-xs sm:text-xs md:text-base lg:rotate-90">
+      <li className="h-fit w-fit text-center text-xs sm:text-xs md:text-base">
         <a
           href="https://www.linkedin.com/in/budi-ariyanto-7a4564199/"
           target="_blank"
