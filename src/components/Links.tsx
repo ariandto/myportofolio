@@ -19,7 +19,6 @@ const Links: React.FC = () => {
           </svg>
         </a>
       </li>
-
       {/* LinkedIn */}
       <li className="h-fit w-fit text-center text-xs sm:text-xs md:text-base lg:rotate-90">
         <a
