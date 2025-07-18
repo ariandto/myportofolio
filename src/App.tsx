@@ -193,8 +193,8 @@ const App: React.FC = () => {
                   
                   {/* Status indicator - Mobile optimized */}
                   <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm">
-                    <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
-                    <span className="text-green-400 font-medium">Available for projects</span>
+                   
+                    
                   </div>
                 </div>
 
