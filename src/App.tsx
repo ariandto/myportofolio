@@ -168,9 +168,17 @@ const App: React.FC = () => {
                   <div className="flex items-center space-x-2 text-xs sm:space-x-3 sm:text-sm"></div>
                 </div>
 
-                <div className="skills-container">
+                <div className="skills-container space-y-6">
                   <SkillList />
-                  {/* Links Section - Now positioned below SkillList */}
+
+                  {/* Links positioned below skill icons */}
+                  <div
+                    className="flex justify-start gap-4 pt-2"
+                    data-aos="fade-up"
+                    data-aos-delay="400"
+                  >
+                    <Links />
+                  </div>
                 </div>
               </div>
             </div>
@@ -206,7 +214,6 @@ const App: React.FC = () => {
           </div>
           <div className="h-12 w-px bg-gradient-to-b from-transparent via-cyan-400 to-transparent sm:h-16"></div>
         </div>
-        <Links />
       </main>
     </>
   );
