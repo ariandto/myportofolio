@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ThemeSwitcher from "./components/ThemeSwitcher";
 
 // Components
 import BackgroundPattern from "./components/BackgroundPattern";
