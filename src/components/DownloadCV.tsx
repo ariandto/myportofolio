@@ -2,7 +2,7 @@ import React from "react";
 
 const DownloadCV: React.FC = () => {
   return (
-    <div className="w-fit rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-4 shadow-md">
+    <div className="flex items-center gap-4 text-white mb-6 ml-4">
       {/* Title */}
       {/* <p className="mb-2 text-sm font-semibold text-white/80 tracking-wide">
         Download My CV
