@@ -1,3 +1,3 @@
 
-export const API_URL = "http://localhost:4900/api/visitors/count";
-export const VISIT_URL = "http://localhost:4900/api/visit";
+export const API_URL = "https://apivisitor.ariandto.pro/api/visitors/count";
+export const VISIT_URL = "https://apivisitor.ariandto.pro/api/visit";
