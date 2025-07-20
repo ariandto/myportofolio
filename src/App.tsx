@@ -150,22 +150,7 @@ const App: React.FC = () => {
                 <NameTypeAnimation />
               </h1>
             </div>
-
-            {/* Content Grid - Mobile First Responsive */}
-            <div className="space-y-8 sm:space-y-10 lg:grid lg:grid-cols-5 lg:gap-8 lg:space-y-0 xl:gap-12">
-              {/* Bio Section - Mobile: Full width, Desktop: 3/5 */}
-              <div className="space-y-6 sm:space-y-8 lg:col-span-3">
-                <p
-                  data-aos="fade-right"
-                  data-aos-delay="200"
-                  className="rounded-xl border border-white/10 bg-white/5 p-4 text-sm leading-relaxed text-gray-300 backdrop-blur-sm sm:rounded-2xl sm:p-6 sm:text-base lg:p-8 lg:text-lg xl:text-xl"
-                >
-                  Passionate full-stack developer crafting digital experiences
-                  that blend innovation with functionality. I transform ideas
-                  into elegant, user-centric solutions that make a difference.
-                </p>
-
-                {/* Action Buttons - Responsive Layout */}
+                   {/* Action Buttons - Responsive Layout */}
                 {/* Action Buttons - Links & Download CV in a row */}
                 <div className="flex flex-row flex-wrap items-center justify-center gap-4 sm:justify-start">
   {/* Links (Connect with me) */}
@@ -180,6 +165,20 @@ const App: React.FC = () => {
     <DownloadCV />
   </div>
 </div>
+
+            {/* Content Grid - Mobile First Responsive */}
+            <div className="space-y-8 sm:space-y-10 lg:grid lg:grid-cols-5 lg:gap-8 lg:space-y-0 xl:gap-12">
+              {/* Bio Section - Mobile: Full width, Desktop: 3/5 */}
+              <div className="space-y-6 sm:space-y-8 lg:col-span-3">
+                <p
+                  data-aos="fade-right"
+                  data-aos-delay="200"
+                  className="rounded-xl border border-white/10 bg-white/5 p-4 text-sm leading-relaxed text-gray-300 backdrop-blur-sm sm:rounded-2xl sm:p-6 sm:text-base lg:p-8 lg:text-lg xl:text-xl"
+                >
+                  Passionate full-stack developer crafting digital experiences
+                  that blend innovation with functionality. I transform ideas
+                  into elegant, user-centric solutions that make a difference.
+                </p>
 
               </div>
 
