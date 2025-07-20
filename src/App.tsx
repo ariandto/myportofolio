@@ -154,13 +154,13 @@ const App: React.FC = () => {
                 {/* Action Buttons - Links & Download CV in a row */}
                 <div className="flex flex-row flex-wrap items-center justify-center gap-4 sm:justify-start">
   {/* Links (Connect with me) */}
-  <div className="flex items-center gap-2">
+  <div className="flex items-baseline gap-2">
     <span className="text-sm text-gray-400"></span>
     <Links />
   </div>
 
   {/* Download CV */}
-  <div className="flex items-center gap-2">
+  <div className="flex items-baseline gap-2">
     <span className="text-sm text-gray-400"></span>
     <DownloadCV />
   </div>
