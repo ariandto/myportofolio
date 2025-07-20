@@ -167,16 +167,20 @@ const App: React.FC = () => {
 
                 {/* Action Buttons - Responsive Layout */}
                 {/* Action Buttons - Links & Download CV in a row */}
-                <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 lg:justify-start">
-                  {/* Links (Connect With Me) */}
-                  <div className="flex justify-center sm:justify-start">
-                    <Links />
-                  </div>
-                  {/* Download CV */}
-                  <div className="flex justify-center sm:justify-start">
-                    <DownloadCV />
-                  </div>
-                </div>
+                <div className="flex flex-row flex-wrap items-center justify-center gap-4 sm:justify-start">
+  {/* Links (Connect with me) */}
+  <div className="flex items-center gap-2">
+    <span className="text-sm text-gray-400">Connect with me</span>
+    <Links />
+  </div>
+
+  {/* Download CV */}
+  <div className="flex items-center gap-2">
+    <span className="text-sm text-gray-400">Download CV</span>
+    <DownloadCV />
+  </div>
+</div>
+
               </div>
 
               {/* Skills Section - Mobile: Full width below, Desktop: 2/5 right */}
