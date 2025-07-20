@@ -12,7 +12,7 @@ const DownloadCV: React.FC = () => {
       <a
         href="/cv-budi-ariyanto.pdf" // Ganti dengan URL CV kamu
         download
-        className="inline-block rounded-lg bg-gradient-to-r from-cyan-500 to-purple-600 px-4 py-2 text-sm font-semibold text-white transition hover:brightness-110"
+        className="inline-block rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:brightness-110"
       >
         📄 Download CV (PDF)
       </a>

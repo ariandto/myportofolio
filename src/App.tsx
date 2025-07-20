@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 
 // Components
 import BackgroundPattern from "./components/BackgroundPattern";
@@ -11,7 +12,6 @@ import Links from "./components/Links";
 import Footer from "./components/Footer";
 import Projects from "./components/Projects";
 import DownloadCV from "./components/DownloadCV";
-import VisitorCounter from "./components/VisitorCounter";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -127,97 +127,105 @@ const App: React.FC = () => {
         {/* Floating orbs - Responsive */}
         <div className="fixed left-4 top-10 h-16 w-16 animate-pulse rounded-full bg-gradient-to-r from-cyan-400/20 to-blue-500/20 blur-xl sm:left-10 sm:top-20 sm:h-32 sm:w-32"></div>
         <div className="fixed bottom-10 right-4 h-20 w-20 animate-pulse rounded-full bg-gradient-to-r from-purple-400/20 to-pink-500/20 blur-xl delay-1000 sm:bottom-20 sm:right-10 sm:h-40 sm:w-40"></div>
-        
+
         {/* Hero Section */}
         <section
           ref={heroRef}
-          className="hero-section relative flex min-h-screen select-none flex-col items-start justify-center px-6 pt-16 sm:px-8 sm:pt-20 md:pt-0 lg:px-16 xl:px-24"
+          className="hero-section relative flex min-h-screen select-none flex-col justify-center px-4 py-12 sm:px-6 sm:py-16 md:px-8 lg:px-16 xl:px-24"
         >
-          <div className="relative z-10 w-full max-w-7xl mx-auto">
-            <h1
-              id="scramble"
-              data-aos="fade-down"
-              data-aos-delay="100"
-              className="Kalnia select-none bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-4xl font-black leading-tight text-transparent sm:text-6xl md:text-8xl 2xl:text-[10rem]"
-              style={{
-                filter: "drop-shadow(0 0 30px rgba(139, 92, 246, 0.3))",
-              }}
-            >
-              <span className="mb-2 block text-lg font-light text-gray-300 sm:mb-4 sm:text-2xl md:text-4xl">
-                Hello, I'm
-              </span>
-              <NameTypeAnimation />
-            </h1>
+          <div className="relative z-10 mx-auto w-full max-w-7xl">
+            {/* Main Title */}
+            <div className="mb-8 sm:mb-12 lg:mb-16">
+              <h1
+                id="scramble"
+                data-aos="fade-down"
+                data-aos-delay="100"
+                className="Kalnia select-none bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-4xl font-black leading-tight text-transparent sm:text-6xl md:text-8xl xl:text-[8rem] 2xl:text-[10rem]"
+                style={{
+                  filter: "drop-shadow(0 0 30px rgba(139, 92, 246, 0.3))",
+                }}
+              >
+                <span className="mb-2 block text-base font-light text-gray-300 sm:mb-4 sm:text-xl md:text-3xl lg:text-4xl">
+                  Hello, I'm
+                </span>
+                <NameTypeAnimation />
+              </h1>
+            </div>
 
-            {/* Enhanced Bio and Skills Grid - Better proportions */}
-            <div className="mt-8 grid gap-8 sm:mt-12 lg:mt-16 lg:grid-cols-3 xl:gap-12">
-              {/* Bio Section - Takes 2/3 on desktop */}
-              <div className="space-y-6 lg:col-span-2">
+            {/* Content Grid - Mobile First Responsive */}
+            <div className="space-y-8 sm:space-y-10 lg:space-y-0 lg:grid lg:grid-cols-5 lg:gap-8 xl:gap-12">
+              {/* Bio Section - Mobile: Full width, Desktop: 3/5 */}
+              <div className="lg:col-span-3 space-y-6 sm:space-y-8">
                 <p
                   data-aos="fade-right"
                   data-aos-delay="200"
-                  className="rounded-xl border border-white/10 bg-white/5 p-6 text-base leading-relaxed text-gray-300 backdrop-blur-sm sm:rounded-2xl sm:p-8 lg:text-lg xl:text-xl"
+                  className="rounded-xl border border-white/10 bg-white/5 p-4 text-sm leading-relaxed text-gray-300 backdrop-blur-sm sm:rounded-2xl sm:p-6 sm:text-base lg:p-8 lg:text-lg xl:text-xl"
                 >
-                  Passionate full-stack developer crafting digital experiences
-                  that blend innovation with functionality. I transform ideas
-                  into elegant, user-centric solutions that make a difference.
+                  Passionate full-stack developer crafting digital experiences that blend innovation with functionality. I transform ideas into elegant, user-centric solutions that make a difference.
                 </p>
 
-                {/* Action buttons */}
-                <div className="flex flex-wrap gap-4 sm:gap-6">
-                  <div
-                    className="flex gap-4"
-                    data-aos="fade-up"
-                    data-aos-delay="400"
-                  >
+                {/* Action Buttons - Responsive Layout */}
+                <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 lg:justify-start">
+                  {/* Links */}
+                  <div className="flex justify-center sm:justify-start">
                     <Links />
                   </div>
-                  <DownloadCV />
+                  
+                  {/* Download CV & Visitor Counter */}
+                  <div className="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:items-center sm:gap-4">
+                    <div className="flex justify-center sm:justify-start">
+                      <DownloadCV />
+                    </div>
+                  </div>
                 </div>
-                <VisitorCounter />
               </div>
 
-              {/* Skills Section - Takes 1/3 on desktop */}
-              <div className="skills-container space-y-6">
-                <SkillList />
+              {/* Skills Section - Mobile: Full width below, Desktop: 2/5 right */}
+              <div className="lg:col-span-2 flex justify-center lg:justify-end lg:items-start">
+                <div className="skills-container w-full max-w-sm lg:max-w-none">
+                  <SkillList />
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* Transition Element */}
-        <div className="h-20 bg-gradient-to-b from-transparent to-slate-900/50 sm:h-32"></div>
+        <div className="h-12 bg-gradient-to-b from-transparent to-slate-900/50 sm:h-20 lg:h-32"></div>
 
-        {/* Projects Section - Remove container wrapper */}
-        <section className="projects-section py-16 sm:py-20 lg:py-24">
-          <div className="mb-12 px-6 text-center sm:mb-16 lg:mb-20 lg:px-16 xl:px-24">
-            <h2 className="mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl lg:text-5xl xl:text-6xl">
+        {/* Projects Section */}
+        <section className="projects-section py-12 sm:py-16 lg:py-20 xl:py-24">
+          {/* Section Header */}
+          <div className="mb-8 px-4 text-center sm:mb-12 sm:px-6 lg:mb-16 lg:px-16 xl:px-24">
+            <h2 className="mb-3 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-2xl font-bold text-transparent sm:mb-4 sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl">
               Featured Projects
             </h2>
-            <p className="mx-auto max-w-3xl text-base text-gray-400 sm:text-lg lg:text-xl">
+            <p className="mx-auto max-w-2xl text-sm text-gray-400 sm:text-base lg:max-w-3xl lg:text-lg xl:text-xl">
               Discover my latest work and creative solutions
             </p>
           </div>
-          
-          {/* Projects component without container wrapper */}
-          <div className="px-6 lg:px-16 xl:px-24">
+
+          {/* Projects Grid */}
+          <div className="px-4 sm:px-6 lg:px-16 xl:px-24">
             <Projects t={() => {}} />
           </div>
         </section>
 
-        {/* Enhanced Footer - Better spacing */}
-        <div className="mt-20 sm:mt-28 lg:mt-32">
+        {/* Footer */}
+        <div className="mt-12 sm:mt-16 lg:mt-20 xl:mt-24">
           <Footer />
         </div>
 
         {/* Scroll indicator - Desktop only */}
-        <div className="fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 transform flex-col items-center space-y-2 lg:flex xl:right-8">
-          <div className="h-16 w-px bg-gradient-to-b from-transparent via-cyan-400 to-transparent"></div>
-          <div className="h-8 w-2 rounded-full border border-cyan-400/50">
-            <div className="mx-auto mt-1 h-2 w-1 animate-bounce rounded-full bg-cyan-400"></div>
+        <div className="fixed right-4 top-1/2 z-40 hidden -translate-y-1/2 transform flex-col items-center space-y-2 lg:flex xl:right-6 2xl:right-8">
+          <div className="h-12 w-px bg-gradient-to-b from-transparent via-cyan-400 to-transparent lg:h-16"></div>
+          <div className="h-6 w-1.5 rounded-full border border-cyan-400/50 lg:h-8 lg:w-2">
+            <div className="mx-auto mt-1 h-1.5 w-0.5 animate-bounce rounded-full bg-cyan-400 lg:h-2 lg:w-1"></div>
           </div>
-          <div className="h-16 w-px bg-gradient-to-b from-transparent via-cyan-400 to-transparent"></div>
+          <div className="h-12 w-px bg-gradient-to-b from-transparent via-cyan-400 to-transparent lg:h-16"></div>
         </div>
+        <div className="mt-12 sm:mt-16 lg:mt-20 xl:mt-24">
+</div>
       </main>
     </>
   );
