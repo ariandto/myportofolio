@@ -152,35 +152,35 @@ const App: React.FC = () => {
             </div>
 
             {/* Content Grid - Mobile First Responsive */}
-            <div className="space-y-8 sm:space-y-10 lg:space-y-0 lg:grid lg:grid-cols-5 lg:gap-8 xl:gap-12">
+            <div className="space-y-8 sm:space-y-10 lg:grid lg:grid-cols-5 lg:gap-8 lg:space-y-0 xl:gap-12">
               {/* Bio Section - Mobile: Full width, Desktop: 3/5 */}
-              <div className="lg:col-span-3 space-y-6 sm:space-y-8">
+              <div className="space-y-6 sm:space-y-8 lg:col-span-3">
                 <p
                   data-aos="fade-right"
                   data-aos-delay="200"
                   className="rounded-xl border border-white/10 bg-white/5 p-4 text-sm leading-relaxed text-gray-300 backdrop-blur-sm sm:rounded-2xl sm:p-6 sm:text-base lg:p-8 lg:text-lg xl:text-xl"
                 >
-                  Passionate full-stack developer crafting digital experiences that blend innovation with functionality. I transform ideas into elegant, user-centric solutions that make a difference.
+                  Passionate full-stack developer crafting digital experiences
+                  that blend innovation with functionality. I transform ideas
+                  into elegant, user-centric solutions that make a difference.
                 </p>
 
                 {/* Action Buttons - Responsive Layout */}
-                <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 lg:justify-start">
-                  {/* Links */}
+                {/* Action Buttons - Links & Download CV in a row */}
+                <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 lg:justify-start">
+                  {/* Links (Connect With Me) */}
                   <div className="flex justify-center sm:justify-start">
                     <Links />
                   </div>
-                  
-                  {/* Download CV & Visitor Counter */}
-                  <div className="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:items-center sm:gap-4">
-                    <div className="flex justify-center sm:justify-start">
-                      <DownloadCV />
-                    </div>
+                  {/* Download CV */}
+                  <div className="flex justify-center sm:justify-start">
+                    <DownloadCV />
                   </div>
                 </div>
               </div>
 
               {/* Skills Section - Mobile: Full width below, Desktop: 2/5 right */}
-              <div className="lg:col-span-2 flex justify-center lg:justify-end lg:items-start">
+              <div className="flex justify-center lg:col-span-2 lg:items-start lg:justify-end">
                 <div className="skills-container w-full max-w-sm lg:max-w-none">
                   <SkillList />
                 </div>
@@ -223,8 +223,7 @@ const App: React.FC = () => {
           </div>
           <div className="h-12 w-px bg-gradient-to-b from-transparent via-cyan-400 to-transparent lg:h-16"></div>
         </div>
-        <div className="mt-12 sm:mt-16 lg:mt-20 xl:mt-24">
-</div>
+        <div className="mt-12 sm:mt-16 lg:mt-20 xl:mt-24"></div>
       </main>
     </>
   );
