@@ -1,8 +1,32 @@
 const BackgroundPattern = () => {
   return (
     <>
-      <div className="pattern-boxes absolute bottom-0 left-0 right-0 top-0 h-auto w-full animate-bounce pattern-bg-transparent pattern-white pattern-opacity-5 pattern-size-8"></div>
-      <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-t from-AlmostBlack to-AlmostBlack/0" />
+      {/* SVG Hexagon Pattern */}
+      <svg
+        className="absolute inset-0 h-full w-full"
+        style={{ zIndex: 0 }}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <pattern
+            id="hexagon"
+            width="36"
+            height="41.57"
+            patternUnits="userSpaceOnUse"
+            patternTransform="scale(1)"
+          >
+            <polygon
+              points="18,0 36,10.39 36,31.18 18,41.57 0,31.18 0,10.39"
+              fill="white"
+              opacity="0.02"
+            />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#hexagon)" />
+      </svg>
+
+      {/* Gradasi overlay agar tetap smooth */}
+      <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-black to-transparent z-10" />
     </>
   );
 };

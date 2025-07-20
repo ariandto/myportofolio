@@ -11,6 +11,8 @@ import Links from "./components/Links";
 import Footer from "./components/Footer";
 import Projects from "./components/Projects";
 import DownloadCV from "./components/DownloadCV";
+import ThemeSwitcher from "./components/ThemeSwitcher";
+
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -117,6 +119,9 @@ const App: React.FC = () => {
           </div>
         </div>
       )}
+      <div className="fixed top-4 right-4 z-50">
+    <ThemeSwitcher />
+  </div>
 
       <main className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-gray-900 to-black text-white">
         {/* Background Elements */}
