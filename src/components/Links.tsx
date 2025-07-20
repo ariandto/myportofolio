@@ -4,9 +4,6 @@ const Links: React.FC = () => {
   return (
     <div className="w-fit rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-4 shadow-md">
       {/* Title */}
-      <p className="mb-2 text-sm font-semibold text-white/80 tracking-wide">
-        Connect with me
-      </p>
 
       {/* Icon List */}
       <ul className="flex items-center gap-4 text-white">
