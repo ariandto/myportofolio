@@ -150,21 +150,22 @@ const App: React.FC = () => {
                 <NameTypeAnimation />
               </h1>
             </div>
-                   {/* Action Buttons - Responsive Layout */}
-                {/* Action Buttons - Links & Download CV in a row */}
-                <div className="flex flex-row flex-wrap items-center justify-center gap-4 sm:justify-start">
-  {/* Links (Connect with me) */}
-  <div className="flex items-baseline gap-2">
-    <span className="text-sm text-gray-400"></span>
-    <Links />
-  </div>
+            {/* Action Buttons - Responsive Layout */}
+            {/* Action Buttons - Links & Download CV in a row */}
+            {/* Action Buttons - Links & Download CV in a row */}
+            <div className="flex flex-row flex-wrap items-center justify-start gap-4 sm:justify-start">
+              {/* Links (Connect with me) */}
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-gray-400">Connect with me</span>
+                <Links />
+              </div>
 
-  {/* Download CV */}
-  <div className="flex items-baseline gap-2">
-    <span className="text-sm text-gray-400"></span>
-    <DownloadCV />
-  </div>
-</div>
+              {/* Download CV */}
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-gray-400">Download My CV</span>
+                <DownloadCV />
+              </div>
+            </div>
 
             {/* Content Grid - Mobile First Responsive */}
             <div className="space-y-8 sm:space-y-10 lg:grid lg:grid-cols-5 lg:gap-8 lg:space-y-0 xl:gap-12">
@@ -179,7 +180,6 @@ const App: React.FC = () => {
                   that blend innovation with functionality. I transform ideas
                   into elegant, user-centric solutions that make a difference.
                 </p>
-
               </div>
 
               {/* Skills Section - Mobile: Full width below, Desktop: 2/5 right */}
