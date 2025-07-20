@@ -11,6 +11,7 @@ import Links from "./components/Links";
 import Footer from "./components/Footer";
 import Projects from "./components/Projects";
 import DownloadCV from "./components/DownloadCV";
+import VisitorCounter from "./components/VisitorCounter";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -173,6 +174,7 @@ const App: React.FC = () => {
                   </div>
                   <DownloadCV />
                 </div>
+                <VisitorCounter />
               </div>
 
               {/* Skills Section - Takes 1/3 on desktop */}
